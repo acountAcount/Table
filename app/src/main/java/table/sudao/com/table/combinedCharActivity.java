@@ -24,7 +24,7 @@ import java.util.List;
  * Created by pcdalao on 2017/9/15.
  */
 
-public class combinedCharActivity extends AppCompatActivity {
+public class CombinedCharActivity extends AppCompatActivity {
     private CombinedChart combineChart;
 
     @Override
@@ -32,11 +32,6 @@ public class combinedCharActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.test);
-
-
-
-
-
 
         combineChart=(CombinedChart)findViewById(R.id.combineChart);
 
