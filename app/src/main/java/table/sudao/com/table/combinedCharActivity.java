@@ -4,8 +4,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.CombinedChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -60,6 +63,12 @@ public class CombinedCharActivity extends AppCompatActivity {
         data.setData(generateBarData(lineValues, "分数"));
         combineChart.setData(data);//设置组合图数据源
 
+        //设置表格描述为空
+        Description description=new Description();
+        description.setText("");
+        combineChart.setDescription(description);
+        //设置表格描述为空 end
+
         combineChart.animateX(1500);//数据显示动画，从左往右依次显示
 
         combineChart.getXAxis().setDrawGridLines(false);//不显示网格
@@ -75,6 +84,10 @@ public class CombinedCharActivity extends AppCompatActivity {
 
         combineChart.getLegend().setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);//设置注解的位置在左上方
         combineChart.getLegend().setForm(Legend.LegendForm.LINE);//这是左边显示小图标的形状
+
+
+        MyMarkerView mv = new MyMarkerView(this, R.layout.d);
+        combineChart.setMarkerView(mv);
 
         YAxis leftAxis = combineChart.getAxisRight();  //得到图表的左侧Y轴实例
         leftAxis.enableGridDashedLine(20f, 20f, 0f); //设置横向表格为虚线
