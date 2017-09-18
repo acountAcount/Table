@@ -4,8 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.Description;
@@ -51,6 +49,14 @@ public class CombinedCharActivity extends AppCompatActivity {
         return  lineValues;
 
     }
+    public  ArrayList linkinitData() {
+        ArrayList  lineValues= new ArrayList<>();
+        for (int x = 10; x< 50; x=x+5) {
+            lineValues.add((float)(Math.random() * 20));
+        }
+        return  lineValues;
+
+    }
 
     /**
      * 设置表格属性
@@ -61,7 +67,7 @@ public class CombinedCharActivity extends AppCompatActivity {
         CombinedData data = new CombinedData();
 
         data.setData(generateBarData(lineValues, "分数"));
-        data.setData(generateLineData(lineValues, "排名"));
+        data.setData(generateLineData(linkinitData(), "排名"));
         combineChart.setData(data);//设置组合图数据源
 
         //设置表格描述为空
@@ -76,17 +82,16 @@ public class CombinedCharActivity extends AppCompatActivity {
 
         combineChart.getAxisLeft().setDrawGridLines(false);//不设置Y轴网格
 
-        //combineChart.getAxisRight().setEnabled(false);   //隐藏右边 的坐标轴
-        //combineChart.getAxisLeft().setEnabled(false);//隐藏左边 的坐标轴
+        combineChart.getAxisRight().setEnabled(false);   //隐藏右边 的坐标轴
+        combineChart.getAxisLeft().setEnabled(false);//隐藏左边 的坐标轴
         combineChart.getXAxis().setEnabled(false);  //隐藏上方坐标轴
 
         combineChart.setDoubleTapToZoomEnabled(false);//启用双击缩放
 
-
         combineChart.getLegend().setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);//设置注解的位置在左上方
 
 
-        MyMarkerView mv = new MyMarkerView(this, R.layout.d);
+        MyMarkerView mv = new MyMarkerView(this, R.layout.pop);
         combineChart.setMarkerView(mv);
 
         YAxis leftAxis = combineChart.getAxisRight();  //得到图表的左侧Y轴实例
@@ -123,6 +128,8 @@ public class CombinedCharActivity extends AppCompatActivity {
         lineDataSet.setForm(Legend.LegendForm.LINE);//左边显示小图标的形状
 
         lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);// 设置平滑曲线
+
+        lineDataSet.setLineWidth(2); //折线粗细
 
         LineData lineData = new LineData(lineDataSet);
         lineData.setValueTextSize(10f);

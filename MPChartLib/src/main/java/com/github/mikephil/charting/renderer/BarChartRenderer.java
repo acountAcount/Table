@@ -436,6 +436,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
     public void drawHighlighted(Canvas c, Highlight[] indices) {
 
         BarData barData = mChart.getBarData();
+        Path path=new Path();
 
         for (Highlight high : indices) {
 
@@ -483,7 +484,20 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
             setHighlightDrawPos(high, mBarRect);
 
-            c.drawRect(mBarRect, mHighlightPaint);
+            /**--zhouyoukun fix 2017.9.16  start**/
+
+            //上下都为圆角
+            // c.drawRoundRect(rectF,(float)20,(float)15,mRenderPaint);
+
+            //头部为圆角 start
+            float[] radii={12f,12f,12f,12f,0f,0f,0f,0f};
+            path.addRoundRect(mBarRect, radii, Path.Direction.CW);
+            c.drawPath(path,mHighlightPaint);
+            //头部为圆角 end
+
+            //  c.drawRect(mBarRect, mHighlightPaint);   //原始方法
+            /**--zhouyoukun fix 2017.9.16  end**/
+
         }
     }
 
