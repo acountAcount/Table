@@ -59,8 +59,9 @@ public class CombinedCharActivity extends AppCompatActivity {
     public void settingCombineChart(ArrayList lineValues){
         //设置组合图数据
         CombinedData data = new CombinedData();
-        data.setData(generateLineData(lineValues, "排名"));
+
         data.setData(generateBarData(lineValues, "分数"));
+        data.setData(generateLineData(lineValues, "排名"));
         combineChart.setData(data);//设置组合图数据源
 
         //设置表格描述为空
@@ -75,15 +76,14 @@ public class CombinedCharActivity extends AppCompatActivity {
 
         combineChart.getAxisLeft().setDrawGridLines(false);//不设置Y轴网格
 
-        combineChart.getAxisRight().setEnabled(false);   //隐藏右边 的坐标轴
-        combineChart.getAxisLeft().setEnabled(false);//隐藏左边 的坐标轴
+        //combineChart.getAxisRight().setEnabled(false);   //隐藏右边 的坐标轴
+        //combineChart.getAxisLeft().setEnabled(false);//隐藏左边 的坐标轴
         combineChart.getXAxis().setEnabled(false);  //隐藏上方坐标轴
 
         combineChart.setDoubleTapToZoomEnabled(false);//启用双击缩放
 
 
         combineChart.getLegend().setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);//设置注解的位置在左上方
-        combineChart.getLegend().setForm(Legend.LegendForm.LINE);//这是左边显示小图标的形状
 
 
         MyMarkerView mv = new MyMarkerView(this, R.layout.d);
@@ -118,7 +118,9 @@ public class CombinedCharActivity extends AppCompatActivity {
         lineDataSet.setDrawValues(false); //设置是否显示点的坐标值
 
 
-        lineDataSet.setValueTextColor(Color.parseColor("#5abdfe"));
+       // lineDataSet.setValueTextColor(Color.parseColor("#5abdfe"));
+
+        lineDataSet.setForm(Legend.LegendForm.LINE);//左边显示小图标的形状
 
         lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);// 设置平滑曲线
 
@@ -146,7 +148,7 @@ public class CombinedCharActivity extends AppCompatActivity {
         barDataSet.setColor(Color.parseColor("#fa8072"));//设置第一组数据颜色
         barDataSet.setDrawValues(false); //设置是否显示点的坐标值
 
-        barDataSet.setForm(Legend.LegendForm.CIRCLE);   //设置描述标题图标为柱体
+        barDataSet.setForm(Legend.LegendForm.SQUARE);   //设置描述标题图标为柱体
         BarData barData = new BarData(barDataSet);
 
         barData.setBarWidth(0.25f);  //设置柱子宽度

@@ -23,7 +23,7 @@ public class MyMarkerView  extends MarkerView {
 
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
-        Utils.formatNumber(e.getY(), 0, true)
+
         Log.d("TAG","X:  "+e.getX()+"Y:   "+e.getY());
      //   Toast.makeText(context,"X:  "+e.getX()+"Y:   "+e.getY(),Toast.LENGTH_LONG).show();
 

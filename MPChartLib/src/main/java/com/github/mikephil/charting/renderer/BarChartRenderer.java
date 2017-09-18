@@ -4,8 +4,11 @@ package com.github.mikephil.charting.renderer;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.buffer.BarBuffer;
@@ -107,8 +110,8 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             float x;
 
             for (int i = 0, count = Math.min((int)(Math.ceil((float)(dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
-                i < count;
-                i++) {
+                 i < count;
+                 i++) {
 
                 BarEntry e = dataSet.getEntryForIndex(i);
 
@@ -139,6 +142,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
         buffer.setBarWidth(mChart.getBarData().getBarWidth());
 
         buffer.feed(dataSet);
+        Path path=new Path();   //zhouyoukun add
 
         trans.pointValuesToPixel(buffer.buffer);
 
@@ -165,10 +169,19 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
             RectF rectF=new RectF(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
                     buffer.buffer[j + 3]);
-            c.drawRoundRect(rectF,(float)25,(float)25,mRenderPaint);
 
-          //  c.drawRect(buffer.buffer[j], buffer.buffer[j + 1]+100, buffer.buffer[j + 2],
-                  //  buffer.buffer[j + 3], mRenderPaint);
+            //上下都为圆角
+            // c.drawRoundRect(rectF,(float)20,(float)15,mRenderPaint);
+
+            //头部为圆角 start
+
+            float[] radii={12f,12f,12f,12f,0f,0f,0f,0f};
+            path.addRoundRect(rectF, radii, Path.Direction.CW);
+            c.drawPath(path,mRenderPaint);
+            //头部为圆角 end
+
+            //  c.drawRect(buffer.buffer[j], buffer.buffer[j + 1]+100, buffer.buffer[j + 2],
+            //  buffer.buffer[j + 3], mRenderPaint);
             /**--zhouyoukun fix 2017.9.16  end**/
             if (drawBorder) {
                 c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
