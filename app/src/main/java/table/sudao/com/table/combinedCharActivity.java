@@ -32,7 +32,7 @@ public class CombinedCharActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.test);
+        setContentView(R.layout.combinedchar);
 
         combineChart=(CombinedChart)findViewById(R.id.combineChart);
 
@@ -106,6 +106,9 @@ public class CombinedCharActivity extends AppCompatActivity {
 
     /**
      * 生成线图数据
+     * @param lineValues
+     * @param lineTitle
+     * @return
      */
     private static LineData generateLineData(List<Float> lineValues, String lineTitle) {
         ArrayList<Entry> lineEntries = new ArrayList<>();

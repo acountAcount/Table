@@ -16,7 +16,7 @@ import com.github.mikephil.charting.utils.MPPointF;
 
 public class MyMarkerView  extends MarkerView {
     private Context context;
-private TextView textView;
+    private TextView textView;
     public MyMarkerView (Context context, int layoutResource) {
         super(context, layoutResource);
         this.context=context;
@@ -27,8 +27,8 @@ private TextView textView;
     public void refreshContent(Entry e, Highlight highlight) {
 
         Log.d("TAG","X:  "+e.getX()+"Y:   "+e.getY());
-     //   Toast.makeText(context,"X:  "+e.getX()+"Y:   "+e.getY(),Toast.LENGTH_LONG).show();
-       // textView.setText("X:  "+e.getX()+"Y:   "+e.getY());
+        //   Toast.makeText(context,"X:  "+e.getX()+"Y:   "+e.getY(),Toast.LENGTH_LONG).show();
+        // textView.setText("X:  "+e.getX()+"Y:   "+e.getY());
         textView.setText("2013年期中考试试卷\n2017.09.09\n第一名 60分");
         super.refreshContent(e, highlight);
     }
