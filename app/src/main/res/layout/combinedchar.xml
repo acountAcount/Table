@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="table.sudao.com.table.MainActivity">
+    tools:context="table.sudao.com.table.activity.MainActivity">
 
-    <com.github.mikephil.charting.charts.CombinedChart
+    <table.sudao.com.table.view.CombinedCharView
         android:id="@+id/combineChart"
         android:layout_width="match_parent"
         android:layout_height="400dp">
 
-    </com.github.mikephil.charting.charts.CombinedChart>
+    </table.sudao.com.table.view.CombinedCharView>
 </android.support.constraint.ConstraintLayout>

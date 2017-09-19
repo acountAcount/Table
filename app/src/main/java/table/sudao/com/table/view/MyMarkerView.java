@@ -1,4 +1,4 @@
-package table.sudao.com.table;
+package table.sudao.com.table.view;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,6 +9,8 @@ import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
+
+import table.sudao.com.table.R;
 
 /**
  * Created by pcdalao on 2017/9/16.  点击事件

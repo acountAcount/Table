@@ -1,4 +1,4 @@
-package table.sudao.com.table;
+package table.sudao.com.table.activity;
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +21,8 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import table.sudao.com.table.R;
 
 public class MainActivity extends AppCompatActivity {
     private LineChart mChart;

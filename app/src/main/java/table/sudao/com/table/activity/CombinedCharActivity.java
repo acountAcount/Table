@@ -1,4 +1,4 @@
-package table.sudao.com.table;
+package table.sudao.com.table.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,9 +21,14 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import table.sudao.com.table.view.MyMarkerView;
+import table.sudao.com.table.R;
+
 /**
  * Created by pcdalao on 2017/9/15.
+ * activity 例子
  */
+
 
 public class CombinedCharActivity extends AppCompatActivity {
     private CombinedChart combineChart;
